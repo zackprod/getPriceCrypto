@@ -10,12 +10,13 @@ app.get('/getPrice', async function (req, res) {
     waitUntil: 'networkidle2',
   });
   try {
-    const result = await page.$eval('.priceValue', (row) => {
+    const result = await page.$eval('.flfGQp', (row) => {
       let price = row.querySelector('span').innerHTML;
       return price;
     });
     res.json({ price: parseFloat(result.replace('$', '')).toFixed(4) });
   } catch (err) {
+    console.log({ err })
     res.json({ price: 0 });
 
     console.log(null);
